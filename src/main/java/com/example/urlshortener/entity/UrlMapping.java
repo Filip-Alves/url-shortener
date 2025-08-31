@@ -39,6 +39,11 @@ public class UrlMapping {
 
     // Constructeurs, getters et setters
 
+
+    public UrlMapping() {
+        // jpa
+    }
+
     public UrlMapping(String url, String shortCode) {
         this.url = url;
         this.shortCode = shortCode;
