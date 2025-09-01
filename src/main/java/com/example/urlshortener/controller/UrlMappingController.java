@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,4 +67,14 @@ public class UrlMappingController {
         return mapping.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/r/{code}")
+    public ResponseEntity<Object> redirect(@PathVariable String code) {
+        return service.incrementAccess(code)
+                .map(m -> ResponseEntity.status(302)
+                        .location(URI.create(m.getUrl()))
+                        .build())
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
