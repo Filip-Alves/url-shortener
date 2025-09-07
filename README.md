@@ -9,7 +9,7 @@ API RESTful pour raccourcir des URLs longues avec **Java 21**, **Spring Boot 3.5
 - Mettre à jour une URL (PUT /shorten/{code})
 - Supprimer une URL (DELETE /shorten/{code})
 - Statistiques d’accès (GET /shorten/{code}/stats)
-- Redirection (GET /r/{code}, 302 Found)
+- Redirection (GET /shorten/r/{code}, 302 Found)
 
 ## Installation
 1. Cloner le projet et créer la base PostgreSQL `url_shortener`.
@@ -24,3 +24,4 @@ API RESTful pour raccourcir des URLs longues avec **Java 21**, **Spring Boot 3.5
 
 ## Test
 Utiliser Postman pour toutes les routes. `/r/{code}` retourne 302 + Location.
+
