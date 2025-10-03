@@ -37,9 +37,6 @@ public class UrlMapping {
         this.updatedAt = LocalDateTime.now();
     }
 
-    // Constructeurs, getters et setters
-
-
     public UrlMapping() {
         // jpa
     }

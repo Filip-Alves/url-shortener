@@ -26,16 +26,12 @@ public class UrlMappingController {
         return ResponseEntity.ok(service.getAll());
     }
 
-
-    // 1. Créer une URL courte
     @PostMapping
     public ResponseEntity<UrlMapping> create(@RequestBody CreateUrlRequest request) {
         UrlMapping mapping = service.create(request.getUrl());
         return ResponseEntity.status(201).body(mapping);
     }
 
-
-    // 2. Récupérer une URL par shortCode
     @GetMapping("/{code}")
     public ResponseEntity<UrlMapping> get(@PathVariable String code) {
         Optional<UrlMapping> mapping = service.getByShortCode(code);
@@ -43,7 +39,6 @@ public class UrlMappingController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // 3. Mettre à jour une URL
     @PutMapping("/{code}")
     public ResponseEntity<UrlMapping> update(@PathVariable String code,@RequestBody @Valid CreateUrlRequest request) {
         Optional<UrlMapping> updated = service.update(code, request.getUrl());
@@ -51,8 +46,6 @@ public class UrlMappingController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
-    // 4. Supprimer une URL
     @DeleteMapping("/{code}")
     public ResponseEntity<Void> delete(@PathVariable String code) {
         boolean deleted = service.delete(code);
@@ -60,7 +53,6 @@ public class UrlMappingController {
                 : ResponseEntity.notFound().build();
     }
 
-    // 5. Obtenir stats d'une URL
     @GetMapping("/{code}/stats")
     public ResponseEntity<UrlMapping> stats(@PathVariable String code) {
         Optional<UrlMapping> mapping = service.getByShortCode(code);
@@ -76,5 +68,4 @@ public class UrlMappingController {
                         .build())
                 .orElse(ResponseEntity.notFound().build());
     }
-
 }
